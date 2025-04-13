@@ -58,7 +58,7 @@ read -rp "Input ur domain : " -e pp
     
 date
 echo ""
-Repodir="https://raw.githubusercontent.com/rullpqh/lite/main/extream/"
+Repodir="https://raw.githubusercontent.com/gapesta/lite/main/extream/"
 domain=$(cat /root/domain)
 sleep 1
 
@@ -109,7 +109,8 @@ chown www-data.www-data $domainSock_dir
 clear
 echo -e "[ ${green}INFO$NC ] INSATLL CORE XRAY"
 # / / Ambil Xray Core Version Terbaru
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.5.6
+latest_version="$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version $latest_version
 clear
 echo -e "[ ${green}INFO$NC ] INSATLL NGINX SERVER"
 # install webserver
@@ -410,7 +411,8 @@ cat > /etc/xray/config.json << END
 }
 END
 rm -rf /etc/systemd/system/xray.service.d
-cat <<EOF> /etc/systemd/system/xray.service 
+cat > /etc/systemd/system/xray.service <<EOF
+[Unit]
 Description=Xray Service
 Documentation=https://github.com/xtls
 After=network.target nss-lookup.target
@@ -582,7 +584,7 @@ echo -e "[ ${green}INFO$NC ] Settings nginx"
 rm /etc/nginx/sites-enabled/default >/dev/null 2>&1
 rm /etc/nginx/sites-available/default >/dev/null 2>&1
 
-cat>  /etc/nginx/nginx.conf <<-END
+cat > /etc/nginx/nginx.conf <<-END
 user  www-data;
 
 worker_processes 1;
@@ -640,7 +642,7 @@ END
 
 mkdir -p /www/xray_web >/dev/null 2>&1
 domain=$(cat /root/domain)
-cat> /etc/nginx/conf.d/vps.conf <<-END
+cat > /etc/nginx/conf.d/vps.conf <<-END
 server {
   listen       81;
   server_name  127.0.0.1 localhost;
@@ -666,10 +668,10 @@ systemctl restart nginx.service >/dev/null 2>&1
 
 sleep 1
 echo -e "[ ${green}INFO$NC ] Installing bbr.."
-#wget -q -O /usr/bin/bbr "wget -q ${Repodir}bbr.sh"
-#chmod +x /usr/bin/bbr
-#bbr >/dev/null 2>&1
-#rm /usr/bin/bbr >/dev/null 2>&1
+wget -q -O /usr/bin/bbr "https://raw.githubusercontent.com/gapesta/lite/refs/heads/main/file/bbr.sh"
+chmod +x /usr/bin/bbr
+bash /usr/bin/bbr >/dev/null 2>&1
+rm -f /usr/bin/bbr >/dev/null 2>&1
 echo -e "$yell[SERVICE]$NC Restart All service"
 systemctl daemon-reload
 sleep 1

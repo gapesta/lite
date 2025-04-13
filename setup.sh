@@ -89,21 +89,21 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 sleep 3
 clear
 
-yellow "Add Domain for XRAY VPN"
-echo " "
-read -rp "Input ur domain : " -e pp
-    if [ -z $pp ]; then
-        echo -e "
-        Nothing input for domain!
-        Then a random domain will be created"
-    else
-        echo "$pp" > /root/scdomain
-	echo "$pp" > /etc/xray/scdomain
-	echo "$pp" > /etc/xray/domain
-	echo "$pp" > /etc/v2ray/domain
-	echo $pp > /root/domain
-        echo "IP=$pp" > /var/lib/scrz-prem/ipvps.conf
-    fi
+#yellow "Add Domain for XRAY VPN"
+#echo " "
+#read -rp "Input ur domain : " -e pp
+#    if [ -z $pp ]; then
+#        echo -e "
+#        Nothing input for domain!
+#        Then a random domain will be created"
+#    else
+#        echo "$pp" > /root/scdomain
+#	echo "$pp" > /etc/xray/scdomain
+#	echo "$pp" > /etc/xray/domain
+#	echo "$pp" > /etc/v2ray/domain
+#	echo $pp > /root/domain
+#        echo "IP=$pp" > /var/lib/scrz-prem/ipvps.conf
+#    fi
     
 #Instal Xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -112,8 +112,8 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 echo -e "[ ${green}SCRIPT${NC} ] free no licence (lifetime) "
 sleep 2
 clear
-wget https://raw.githubusercontent.com/rullpqh/lite/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
-wget https://raw.githubusercontent.com/rullpqh/lite/main/file/bbr.sh chmod +x bbr.sh && sed -i -e 's/\r$//' bbr.sh && screen -S bbr ./bbr.sh
+wget https://raw.githubusercontent.com/gapesta/lite/main/extream/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+#wget https://raw.githubusercontent.com/gapesta/lite/main/file/bbr.sh chmod +x bbr.sh && sed -i -e 's/\r$//' bbr.sh && screen -S bbr ./bbr.sh
 clear
 cat> /root/.profile << END
 # ~/.profile: executed by Bourne-compatible login shells.
