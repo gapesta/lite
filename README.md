@@ -21,7 +21,6 @@ Selain itu Script yang sangat ringan Dan Fast Respon
  - Trojan WS + gRPC        : 443
  - XRAY  Vmess None TLS    : 80
  - XRAY  Vless None TLS    : 80
- - Nginx                   : 81
 
 ### Other Services:
 Speedtest CLI
@@ -45,14 +44,15 @@ Copy dan paste code di bawah ke dalam terminal lalu tekan enter.
 
 **Link Copy script:**
 
+Incloude BBR Booster untuk Trojan, V2Ray dan XRay
 ```
-sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && rm -rf setup.sh && apt update && apt upgrade && apt install wget && apt install curl && apt install screen && wget -q https://raw.githubusercontent.com/rullpqh/lite/main/setup.sh && chmod +x setup.sh && screen -S netzinstall ./setup.sh
+sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && rm -rf setup.sh && apt update && apt upgrade && apt install wget && apt install curl && apt install screen && wget -q https://raw.githubusercontent.com/gapesta/lite/main/setup.sh && chmod +x setup.sh && screen -S netzinstall ./setup.sh "domainmu"
 ```
 **Link Copy script:**
 
 BBR Booster untuk Trojan, V2Ray dan XRay
 ```
-wget https://raw.githubusercontent.com/rullpqh/lite/main/file/bbr.sh chmod +x bbr.sh && sed -i -e 's/\r$//' bbr.sh && screen -S bbr ./bbr.sh
+wget https://raw.githubusercontent.com/gapesta/lite/main/file/bbr.sh chmod +x bbr.sh && sed -i -e 's/\r$//' bbr.sh && screen -S bbr ./bbr.sh
 ```
 ## Silahkan Digunakan dengan Bijak ...
-Gunakan Sc free ni sebaiknya, **JANGAN DI JUAL**. Jangan lupa feedback saya di Telegram, [@bhoikfost_yahya](https://t.me/bhoikfost_yahya).
+Gunakan Sc free ni sebaiknya, **JANGAN DI JUAL**. Jangan lupa feedback saya di Telegram, [@jaringan_vpn](https://t.me/jaringan_vpn).

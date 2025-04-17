@@ -45,6 +45,11 @@ clear
 END
 chmod 644 /root/.profile
 
+apt install ufw -y
+#ufw allow 22,80,443,81,0085,4016,14017,14018,30300,14019,14020,14021,30310,
+ufw allow 22,80,443,14016,14017,14018,30300,700,14019,14020,14021,30310
+sudo ufw enable -y
+
 mkdir -p /var/lib/scrz-prem >/dev/null 2>&1
 echo "IP=" >> /var/lib/scrz-prem/ipvps.conf
 
@@ -70,17 +75,12 @@ fi
 fi
 echo ""
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green ______ ______       ___________ ________            _____  $NC"   
-echo -e "$green ___  /____  /__________(_)__  /____  __/______________  /_ $NC"  
-echo -e "$green __  __ \_  __ \  __ \_  /__  //_/_  /_ _  __ \_  ___/  __/ $NC"  
-echo -e "$green _  /_/ /  / / / /_/ /  / _   <  _  __/ / /_/ /(__  )/ /_   $NC" 
-echo -e "$green /_ ___//_/ /_/\____//_/  /_/|_| /_/    \____//____/ \__/   $NC"                                                    
-echo -e "$green              ______                                        $NC" 
-echo -e "$green _____  _______ ___  /______  _______ _                     $NC"   
-echo -e "$green __  / / /  __  /_  __ \_  / / /  __  /                     $NC"  
-echo -e "$green _  /_/ // /_/ /_  / / /  /_/ // /_/ /                      $NC"   
-echo -e "$green _\__  / \__ _/ /_/ /_/_\__  / \__ _/                       $NC"   
-echo -e "$green /____/                /____/                               $NC"   
+echo -e "$green ______          ______    ____________       ______        $NC"   
+echo -e "$green ___  / ______ _______    __  ___/_  /__________________    $NC"  
+echo -e "$green __  /  _  __ `/_  __ \   _____ \_  __/  __ \_  ___/  _ \   $NC"  
+echo -e "$green _  /___/ /_/ /_  / / /   ____/ // /_ / /_/ /  /   /  __/   $NC" 
+echo -e "$green /_____/\__,_/ /_/ /_/    /____/ \__/ \____//_/    \___/    $NC"                                                    
+echo -e "$green ______              ______    ____________       ______    $NC" 
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green              FREE AUTOSCRIPT VPS                          $NC"
 echo -e "$green             NO LICENCE USER SETUP                         $NC"
@@ -89,21 +89,22 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 sleep 3
 clear
 
-#yellow "Add Domain for XRAY VPN"
-#echo " "
+yellow "Add Domain for XRAY VPN"
+echo " "
 #read -rp "Input ur domain : " -e pp
-#    if [ -z $pp ]; then
-#        echo -e "
-#        Nothing input for domain!
-#        Then a random domain will be created"
-#    else
-#        echo "$pp" > /root/scdomain
-#	echo "$pp" > /etc/xray/scdomain
-#	echo "$pp" > /etc/xray/domain
-#	echo "$pp" > /etc/v2ray/domain
-#	echo $pp > /root/domain
-#        echo "IP=$pp" > /var/lib/scrz-prem/ipvps.conf
-#    fi
+pp="$1"
+    if [ -z $pp ]; then
+        echo -e "
+        Nothing input for domain!
+        Then a random domain will be created"
+    else
+        echo "$pp" > /root/scdomain
+	      echo "$pp" > /etc/xray/scdomain
+	      echo "$pp" > /etc/xray/domain
+      	echo "$pp" > /etc/v2ray/domain
+	      echo $pp > /root/domain
+        echo "IP=$pp" > /var/lib/scrz-prem/ipvps.conf
+    fi
     
 #Instal Xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -112,8 +113,8 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 echo -e "[ ${green}SCRIPT${NC} ] free no licence (lifetime) "
 sleep 2
 clear
-wget https://raw.githubusercontent.com/gapesta/lite/main/extream/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
-#wget https://raw.githubusercontent.com/gapesta/lite/main/file/bbr.sh chmod +x bbr.sh && sed -i -e 's/\r$//' bbr.sh && screen -S bbr ./bbr.sh
+wget https://raw.githubusercontent.com/gapesta/lite/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget https://raw.githubusercontent.com/gapesta/lite/main/file/bbr.sh chmod +x bbr.sh && sed -i -e 's/\r$//' bbr.sh && screen -S bbr ./bbr.sh
 clear
 cat> /root/.profile << END
 # ~/.profile: executed by Bourne-compatible login shells.
@@ -148,7 +149,7 @@ echo "   - XRAY  Vmess TLS + gRPC  : 443" | tee -a log-install.txt
 echo "   - XRAY  Vless TLS + gRPC  : 443" | tee -a log-install.txt
 echo "   - XRAY  Vmess None TLS    : 80" | tee -a log-install.txt
 echo "   - XRAY  Vless None TLS    : 80" | tee -a log-install.txt
-echo "   - Nginx                   : 81" | tee -a log-install.txt
+#echo "   - Nginx                   : 81" | tee -a log-install.txt
 echo ""
 echo "------------------------------------------------------------"
 echo ""

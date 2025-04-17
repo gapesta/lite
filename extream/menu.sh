@@ -57,11 +57,18 @@ if [[ $nginx == "running" ]]; then
 else
  status_nginx="${RED}OFF${NC}"
 fi
+# // nginx
+xraynya=$( systemctl status nginx | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $xraynya == "running" ]]; then
+ status_xray="${GREEN}ON${NC}"
+else
+ status_xray="${RED}OFF${NC}"
+fi
 clear
 clear
 clear
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m             ⇱ INFORMASI VPS ⇲                                   \E[0m"
+echo -e "\E[44;1;39m             ⇱ INFORMASI VPS ⇲                            E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 
 echo -e "□ 🔰\e[32;1mSever Uptime\e[0m      : $( uptime -p  | cut -d " " -f 2-10000 ) "
@@ -72,16 +79,16 @@ echo -e "□ 🔰\e[32;1mCurrent Isp Name\e[0m  : $ISP"
 echo -e "□ 🔰\e[32;1mServer IP\e[0m         : ${IP}"
 echo -e "□ 🔰\e[32;1mTime Reboot VPS\e[0m   : 00:00 ( Jam 12 Malam )"
 echo -e "□ 🔰\e[32;1mLicense SC Limit\e[0m  : Lifetime"
-echo -e "□ 🔰\e[32;1mAutoScript By Dev\e[0m : Bhoikfost Yahya"
+echo -e "□ 🔰\e[32;1mAutoScript By Dev\e[0m : Lan Store"
 
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m             ⇱ STATUS LAYANAN ⇲                                  \E[0m"
+echo -e "\E[44;1;39m             ⇱ STATUS LAYANAN ⇲                           E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
-echo -e "       🟢🟡🔴  [ ${GREEN}SERVER XRAY VPN${NC} : ${status_nginx} ]  🔴🟡🟢"
+echo -e " 🟢🔴[ ${GREEN}SERVER XRAY${NC} : ${status_xary} ${GREEN}SERVER NGINX${NC} : ${status_nginx} ]🔴🟢 "
 echo -e ""
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m              ⇱ MENU LAYANAN ⇲                                   \E[0m"
+echo -e "\E[44;1;39m              ⇱ MENU LAYANAN ⇲                            \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
 echo -e " [${GREEN}1${NC}]${RED} • ${NC}Membuat akun VMESS  $NC"
