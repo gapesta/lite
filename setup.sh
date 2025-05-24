@@ -63,8 +63,9 @@ echo -e "[ ${red}INFO${NC} ] Autoscript xray vpn lite (multi port)"
 echo -e "[ ${red}INFO${NC} ] no licence script (free lifetime)"
 echo -e "[ ${red}INFO${NC} ] Pastikan internet lancar saat insatll script"
 echo -e "[ ${red}INFO${NC} ] Hubungkan terlebih dahulu IP VPS anda ke Domain"
-echo -ne "[ ${yell}WARNING${NC} ] MELANJUTKAN UNTUK INSTALL AUTOSCRIPT  (y/n)? "
-read answer
+echo -e "[ ${yell}WARNING${NC} ] MELANJUTKAN UNTUK INSTALL AUTOSCRIPT  (y/n)? "
+#read answer
+read -p "Lanjutkan setup? (y/n): " answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 rm setup.sh
 sleep 5
@@ -77,8 +78,8 @@ echo ""
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green ______          ______    ____________       ______        $NC"   
 echo -e "$green ___  / ______ _______    __  ___/_  /__________________    $NC"  
-echo -e "$green __  /  _  __ `/_  __ \   _____ \_  __/  __ \_  ___/  _ \   $NC"  
-echo -e "$green _  /___/ /_/ /_  / / /   ____/ // /_ / /_/ /  /   /  __/   $NC" 
+echo -e "$green __  /  _  __ \`/_  __ \\   _____ \\_  __/  __ \\_  ___/  _ \\   $NC"
+echo -e "$green _  /___/ /_/ /_  / / /   ____/ // /_ / /_/ /  /   /  __/   $NC"
 echo -e "$green /_____/\__,_/ /_/ /_/    /____/ \__/ \____//_/    \___/    $NC"                                                    
 echo -e "$green ______              ______    ____________       ______    $NC" 
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -160,7 +161,7 @@ rm /root/setup.sh >/dev/null 2>&1
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e "
 "
-echo -ne "[ ${yell}WARNING${NC} ] Silahkan Reboot Ulang Vps Anda ? (y/n)? "
+echo -e "[ ${yell}WARNING${NC} ] Silahkan Reboot Ulang Vps Anda ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 exit 0
