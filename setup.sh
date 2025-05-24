@@ -91,8 +91,7 @@ clear
 
 yellow "Add Domain for XRAY VPN"
 echo " "
-#read -rp "Input ur domain : " -e pp
-pp="$1"
+read -rp "Input ur domain : " -e pp
     if [ -z $pp ]; then
         echo -e "
         Nothing input for domain!
